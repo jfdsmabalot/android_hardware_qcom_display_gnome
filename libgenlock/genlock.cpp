@@ -118,7 +118,6 @@ namespace {
     }
 }
 
-    genlock_status_t ret = GENLOCK_NO_ERROR;
 #ifdef USE_GENLOCK
     if (private_handle_t::validate(buffer_handle)) {
         ALOGE("%s: handle is invalid", __FUNCTION__);
@@ -161,7 +160,8 @@ namespace {
         hnd->genlockHandle = 0;
     }
 #endif
-
+    return ret;
+}
 /*
  * Release a genlock lock associated with the handle.
  *
@@ -189,8 +189,6 @@ namespace {
 #endif
     return ret;
 }
-
-
 /*
  * Attach a lock to the buffer handle passed via an IPC.
  *
@@ -198,7 +196,6 @@ namespace {
  * @return error status.
  */
 
-    genlock_status_t ret = GENLOCK_NO_ERROR;
 #ifdef USE_GENLOCK
     if (private_handle_t::validate(buffer_handle)) {
         ALOGE("%s: handle is invalid", __FUNCTION__);
