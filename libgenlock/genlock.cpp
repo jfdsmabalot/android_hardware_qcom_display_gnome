@@ -55,8 +55,6 @@ namespace {
             return -1;
         }
 #endif
-        return kLockType;
-    }
 
     /* Internal function to perform the actual lock/unlock operations */
     
@@ -104,8 +102,6 @@ namespace {
 #endif
         }
 #endif
-        return GENLOCK_NO_ERROR;
-    }
 
     /* Internal function to close the fd and release the handle */
     void close_genlock_fd_and_handle(int& fd, int& handle)
@@ -121,13 +117,6 @@ namespace {
         }
     }
 }
-/*
- * Create a genlock lock. The genlock lock file descriptor and the lock
- * handle are stored in the buffer_handle.
- *
- * @param: handle of the buffer
- * @return error status.
- */
 
     genlock_status_t ret = GENLOCK_NO_ERROR;
 #ifdef USE_GENLOCK
