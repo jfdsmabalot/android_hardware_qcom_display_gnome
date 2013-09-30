@@ -40,7 +40,7 @@
 
 namespace {
 /* Internal function to map the userspace locks to the kernel lock types */
-    {
+    
         int kLockType = 0;
 #ifdef USE_GENLOCK
         // If the user sets both a read and write lock, higher preference is
@@ -59,7 +59,7 @@ namespace {
     }
 
     /* Internal function to perform the actual lock/unlock operations */
-    {
+    
 #ifdef USE_GENLOCK
         if (private_handle_t::validate(buffer_handle)) {
             ALOGE("%s: handle is invalid", __FUNCTION__);
@@ -128,7 +128,7 @@ namespace {
  * @param: handle of the buffer
  * @return error status.
  */
-{
+
     genlock_status_t ret = GENLOCK_NO_ERROR;
 #ifdef USE_GENLOCK
     if (private_handle_t::validate(buffer_handle)) {
@@ -182,7 +182,7 @@ namespace {
  * @param: handle of the buffer
  * @return error status.
  */
-{
+
     genlock_status_t ret = GENLOCK_NO_ERROR;
 #ifdef USE_GENLOCK
     if (private_handle_t::validate(buffer_handle)) {
@@ -211,7 +211,7 @@ namespace {
  * @param: handle of the buffer
  * @return error status.
  */
-{
+
     genlock_status_t ret = GENLOCK_NO_ERROR;
 #ifdef USE_GENLOCK
     if (private_handle_t::validate(buffer_handle)) {
@@ -258,7 +258,7 @@ namespace {
  * @param: timeout value in ms. GENLOCK_MAX_TIMEOUT is the maximum timeout value.
  * @return error status.
  */
-{
+
     genlock_status_t ret = GENLOCK_NO_ERROR;
 #ifdef USE_GENLOCK
     // Translate the locktype
@@ -284,7 +284,7 @@ namespace {
  * @param: handle of the buffer to be unlocked.
  * @return: error status.
  */
-{
+
     genlock_status_t ret = GENLOCK_NO_ERROR;
 #ifdef USE_GENLOCK
     // Do the unlock operation by setting the unlock flag. Timeout is always
@@ -301,7 +301,7 @@ namespace {
  * @param: timeout value for the wait.
  * return: error status.
  */
-{
+
 #ifdef USE_GENLOCK
     if (private_handle_t::validate(buffer_handle)) {
         ALOGE("%s: handle is invalid", __FUNCTION__);
@@ -338,7 +338,7 @@ namespace {
  * @param: timeout value for the wait.
  * return: error status.
  */
-{
+
     genlock_status_t ret = GENLOCK_NO_ERROR;
 #ifdef USE_GENLOCK
     if (0 == timeout) {
