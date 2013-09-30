@@ -296,20 +296,16 @@ int gpu_context_t::alloc_impl(int w, int h, int format, int usage,
                                    grallocFormat, alignedw, alignedh);
     }
 
-<<<<<<< HEAD
     if (err < 0) {
         return err;
     }
 
-=======
->>>>>>> aee73e2... display: Remove genlock usage
     *pStride = alignedw;
     return 0;
 }
 
 int gpu_context_t::free_impl(private_handle_t const* hnd) {
     private_module_t* m = reinterpret_cast<private_module_t*>(common.module);
-<<<<<<< HEAD
     if (hnd->flags & private_handle_t::PRIV_FLAGS_FRAMEBUFFER) {
         const size_t bufferSize = m->finfo.line_length * m->info.yres;
         int index = (hnd->base - m->framebuffer->base) / bufferSize;
@@ -330,7 +326,6 @@ int gpu_context_t::free_impl(private_handle_t const* hnd) {
         if (err)
             return err;
     }
-=======
 
     terminateBuffer(&m->base, const_cast<private_handle_t*>(hnd));
     IMemAlloc* memalloc = mAllocCtrl->getAllocator(hnd->flags);
@@ -346,7 +341,6 @@ int gpu_context_t::free_impl(private_handle_t const* hnd) {
     if (err)
         return err;
 
->>>>>>> aee73e2... display: Remove genlock usage
     delete hnd;
     return 0;
 }
