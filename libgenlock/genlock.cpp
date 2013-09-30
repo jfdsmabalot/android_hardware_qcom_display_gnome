@@ -40,7 +40,6 @@
 
 namespace {
 /* Internal function to map the userspace locks to the kernel lock types */
-    int get_kernel_lock_type(genlock_lock_type lockType)
     {
         int kLockType = 0;
 #ifdef USE_GENLOCK
@@ -60,9 +59,6 @@ namespace {
     }
 
     /* Internal function to perform the actual lock/unlock operations */
-    genlock_status_t perform_lock_unlock_operation(native_handle_t *buffer_handle,
-                                                   int lockType, int timeout,
-                                                   int flags)
     {
 #ifdef USE_GENLOCK
         if (private_handle_t::validate(buffer_handle)) {
@@ -132,7 +128,6 @@ namespace {
  * @param: handle of the buffer
  * @return error status.
  */
-genlock_status_t genlock_create_lock(native_handle_t *buffer_handle)
 {
     genlock_status_t ret = GENLOCK_NO_ERROR;
 #ifdef USE_GENLOCK
@@ -187,7 +182,6 @@ genlock_status_t genlock_create_lock(native_handle_t *buffer_handle)
  * @param: handle of the buffer
  * @return error status.
  */
-genlock_status_t genlock_release_lock(native_handle_t *buffer_handle)
 {
     genlock_status_t ret = GENLOCK_NO_ERROR;
 #ifdef USE_GENLOCK
@@ -217,7 +211,6 @@ genlock_status_t genlock_release_lock(native_handle_t *buffer_handle)
  * @param: handle of the buffer
  * @return error status.
  */
-genlock_status_t genlock_attach_lock(native_handle_t *buffer_handle)
 {
     genlock_status_t ret = GENLOCK_NO_ERROR;
 #ifdef USE_GENLOCK
@@ -265,9 +258,6 @@ genlock_status_t genlock_attach_lock(native_handle_t *buffer_handle)
  * @param: timeout value in ms. GENLOCK_MAX_TIMEOUT is the maximum timeout value.
  * @return error status.
  */
-genlock_status_t genlock_lock_buffer(native_handle_t *buffer_handle,
-                                     genlock_lock_type_t lockType,
-                                     int timeout)
 {
     genlock_status_t ret = GENLOCK_NO_ERROR;
 #ifdef USE_GENLOCK
@@ -294,7 +284,6 @@ genlock_status_t genlock_lock_buffer(native_handle_t *buffer_handle,
  * @param: handle of the buffer to be unlocked.
  * @return: error status.
  */
-genlock_status_t genlock_unlock_buffer(native_handle_t *buffer_handle)
 {
     genlock_status_t ret = GENLOCK_NO_ERROR;
 #ifdef USE_GENLOCK
@@ -312,7 +301,7 @@ genlock_status_t genlock_unlock_buffer(native_handle_t *buffer_handle)
  * @param: timeout value for the wait.
  * return: error status.
  */
-genlock_status_t genlock_wait(native_handle_t *buffer_handle, int timeout) {
+{
 #ifdef USE_GENLOCK
     if (private_handle_t::validate(buffer_handle)) {
         ALOGE("%s: handle is invalid", __FUNCTION__);
@@ -349,8 +338,7 @@ genlock_status_t genlock_wait(native_handle_t *buffer_handle, int timeout) {
  * @param: timeout value for the wait.
  * return: error status.
  */
-genlock_status_t genlock_write_to_read(native_handle_t *buffer_handle,
-                                       int timeout) {
+{
     genlock_status_t ret = GENLOCK_NO_ERROR;
 #ifdef USE_GENLOCK
     if (0 == timeout) {
