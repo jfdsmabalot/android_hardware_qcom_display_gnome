@@ -160,8 +160,7 @@ namespace {
         hnd->genlockHandle = 0;
     }
 #endif
-    return ret;
-}
+
 /*
  * Release a genlock lock associated with the handle.
  *
